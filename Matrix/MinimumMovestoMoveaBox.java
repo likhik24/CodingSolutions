@@ -48,15 +48,16 @@ package Matrix;
 public class MinimumMovestoMoveaBox {
     MinimumMovestoMoveaBox() {}
 }
-   /* Heuristic (an under-estimate of the remaining moves required) is the Manhattan distance between box and target.
+   /*
+   Heuristic (an under-estimate of the remaining moves required) is the Manhattan distance between box and target.
     A state consist of box and person locations together.
 
     Repeatedly pop the state with the lowest heuristic + previous moves off the heap.
     Attempt to move the person in all 4 directions.
-    If any direction moves the person to the box, check if the box can move to the nex position in the grid. */
+    If any direction moves the person to the box, check if the box can move to the nex position in the grid.
 
 // use A-SEARCH ALGORITHM
-            /*rows, cols = len(grid), len(grid[0])
+            rows, cols = len(grid), len(grid[0])
             for r in range(rows):
             for c in range(cols):
             if grid[r][c] == "T":
@@ -103,3 +104,4 @@ public class MinimumMovestoMoveaBox {
 
         return -1
 
+             */
