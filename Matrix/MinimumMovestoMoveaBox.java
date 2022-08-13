@@ -46,6 +46,8 @@ package Matrix;
         Output: 5
         Explanation: push the box down, left, left, up and up. */
 public class MinimumMovestoMoveaBox {
+    MinimumMovestoMoveaBox() {}
+}
    /* Heuristic (an under-estimate of the remaining moves required) is the Manhattan distance between box and target.
     A state consist of box and person locations together.
 
@@ -53,7 +55,8 @@ public class MinimumMovestoMoveaBox {
     Attempt to move the person in all 4 directions.
     If any direction moves the person to the box, check if the box can move to the nex position in the grid. */
 
-            rows, cols = len(grid), len(grid[0])
+// use A-SEARCH ALGORITHM
+            /*rows, cols = len(grid), len(grid[0])
             for r in range(rows):
             for c in range(cols):
             if grid[r][c] == "T":
@@ -99,4 +102,4 @@ public class MinimumMovestoMoveaBox {
             heapq.heappush(heap, [heuristic(box) + moves, moves, new_person, box]) # box remains same
 
         return -1
-}
+

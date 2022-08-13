@@ -91,6 +91,7 @@ public class SingleThreadedCPU {
             // Store enqueue time, processing time, task index.
             PriorityQueue<int[]> nextTask = new PriorityQueue<int[]>((a, b) -> (a[1] != b[1] ? (a[1] - b[1]) : (a[2] - b[2])));
 
+
             // Store task enqueue time, processing time, index.
             int sortedTasks[][] = new int[tasks.length][3];
             for (int i = 0; i < tasks.length; ++i) {
