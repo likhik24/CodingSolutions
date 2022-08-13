@@ -99,7 +99,7 @@ public class SingleThreadedCPU {
                 sortedTasks[i][2] = i;
             }
 
-            Arrays.sort(sortedTasks, (a, b) -> Integer.compare(a[0], b[0]));
+            Arrays.sort(sortedTasks, Comparator.comparingInt(a -> a[0]));
             int tasksProcessingOrder[] = new int[tasks.length];
 
             long currTime = 0;
