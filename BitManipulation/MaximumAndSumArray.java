@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package BitManipulation;
 /*
 You are given an integer array nums of length n and an integer numSlots such that 2 * numSlots >= n. There are numSlots slots numbered from 1 to numSlots.
 
