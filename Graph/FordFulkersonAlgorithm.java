@@ -7,6 +7,7 @@ import java.util.*;
         initially all edges flow is 0
         so residual graph is orginal capacity of the graph, then we do bfs from nodes to update residual capacity of the graph by updating parent and from source to t find the maximum path flow subtract this from all existing paths form source to sink then again to bfs on residual graph to further ge tminimum flow
 
+maximum flow is obtained from minimum cut of the graph in ford fulkerson
 
 //find max flow between source and sink nodes n d graph,  start doing bfs from source in residual graph and keep updating parent until we connect to target, any edge greater than flow 0 can be used to connect to target ,
 // we keep adding to queue  the nodes that are in path and flow greater than 0 to be visited, after each bfs we backtrack the path from target to source using parent array and update pathflow to be minimum of any paths ,

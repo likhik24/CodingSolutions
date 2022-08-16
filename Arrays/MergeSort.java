@@ -37,8 +37,7 @@ public class MergeSort {
       int i=0;
       int j=0;
       int k=l;
-      int[] res = new int[arr1.length+arr2.length];
-      while(i<arr1.length && j < arr2.length) {
+     while(i<arr1.length && j < arr2.length) {
           if(arr1[i] >arr2[j])
               arr[k++] = arr2[j++];
           else arr[k++] = arr1[i++];

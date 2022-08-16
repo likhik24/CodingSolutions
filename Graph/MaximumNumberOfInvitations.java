@@ -47,7 +47,8 @@ public class MaximumNumberOfInvitations {
         //here they are 2 groups boys, girls which have edges from one boy to multiple girls and each boy can only invite one girl
         //we need to find maximum bipartite matching between two groups
         // create array to store fixed girls invites of which boy is giving the girl invite
-        //then for each boy in the grid , we will call dfs to find (if this boy can give a gift to a girl who is already fixed with another boy or who is not fixed with another boy) ( in case if this boy have to give invite to fixed girl , we will check if that boy of fixed girl can invite another girl who is not fixed) it returns true that means this boy can gift to a girl who has not fixed yet/fixed with naother boy but that boy can find replacement of another girl
+        //then for each boy in the grid , we will call dfs to find (if this boy can give a gift to a girl who is already fixed with another boy or who is not fixed with another boy) ( in case if this boy have to give invite to fixed girl ,
+        // we will check if that boy of fixed girl can invite another girl who is not fixed) it returns true that means this boy can gift to a girl who has not fixed yet/fixed with naother boy but that boy can find replacement of another girl
         // we increment invitations if dfs returns true;
 
         int[] girlsInvitedBy = new int[grid[0].length];
