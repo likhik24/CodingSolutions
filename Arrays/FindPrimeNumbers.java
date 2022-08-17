@@ -7,7 +7,7 @@ public void printPrime(int n) {
     Arrays.fill(arr, true);
 //    Sieve of Eratosthenes
 //    Sieve of Eratosthenes is one of the oldest and easiest methods for finding prime numbers up to a given number. It is based on marking as composite all the multiples of a prime. To do so, it starts with 2 as the first prime number and marks all of its multiples (\texttt{4, 6, 8, ...}). Then, it marks the next unmarked number (\texttt{3}) as prime and crosses out all its multiples (\texttt{6, 9, 12, ...}). It does the same for all the other numbers up to n:
-//
+// time complexity : O(nlog(logn)) as everytime we update arr[i] as false for all multiples of n from n^2 the value space reduces by half
 //
 //    However, as we can see, some numbers get crossed several times. In order to avoid it,
 //    for each prime p, we can start from p^2 to mark off its multiples.
