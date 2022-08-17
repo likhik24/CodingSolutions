@@ -210,6 +210,7 @@ public class BoggleGame {
                 { 'Q', 'S', 'E' } };
 
         findWords(boggle, root);
+        System.out.println(dictionary[0].substring(0,01));
     }
 
 }

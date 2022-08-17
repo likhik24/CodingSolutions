@@ -146,9 +146,9 @@ public class MaximumXorOfTwoElements {
             //we start to find from left most bit that is most signifcant bit which can be xored to 1 and then continue to find other bits which can e xored to 1, we start shifting characters by L-i length to get the leftmost significant bit and compare them to get most number of 1's in the XOR, maxXor contains most number of 1s we found , currXor contains curr max number of 1s we have
 
             for(int i=L-1; i>=0;i--) {
-                maxXor <<= 1;
+                maxXor <<= 1; // this is initially 0 then it becomes 2 if most signifcant digit matches then 110 then 1110
                 prefixes.clear();
-                currXor = maxXor | 1;
+                currXor = maxXor | 1; // this will convert maxxor to 01, then 11, then 111 then 1111 and so on as we move from most significant to least significant bits
                 System.out.println(maxXor + " " + currXor);
                 for(int num: nums) { prefixes.add(num >>i );}
                 for(int p:prefixes) {
