@@ -86,7 +86,7 @@ public class MinimumNumberOfSquaresToFitRectangle {
             keyCountMap.put(key, count);
             int end = pos;
 
-            while(end+1 < height.length && height[end+1] == height[end] && (end - pos + 2 + minHeight) <= m) end++;
+            while(end+1 < height.length && height[end+1] == height[end] && (end - pos + 1 + minHeight) < m) end++; //end-pos check is to make sure end+1 < m as we want to form a square of atleast 1
             for(int j=end;j>=pos;j--) {
                 int k=j-pos+1;
                 int[] temp = Arrays.copyOf(height, n+1);

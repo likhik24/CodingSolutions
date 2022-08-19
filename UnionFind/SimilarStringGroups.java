@@ -68,7 +68,7 @@ public class SimilarStringGroups {
         public int numSimilarGroups(String[] strs) {
             UnionFind un = new UnionFind(strs.length);
             IntStream.range(0, un.length).forEach(i -> IntStream.range(i+1, un.length).filter(j -> isSimilar(strs[i], strs[j])).forEach(j -> un.union(i, j)));
-            long numGroups = IntStream.range(0, un.length).filter(i -> un.parent[i] == i).count();
+            long numGroups = un.getNumGroups();
             return (int)numGroups;
 
         }
