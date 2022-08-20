@@ -1,3 +1,5 @@
+package Backtracking;
+
 import java.util.*;
 
 public class PalindromicPermutation {
@@ -39,7 +41,8 @@ public class PalindromicPermutation {
 //            In this way, only the required palindromic permutations will be generated. Even if we go with the above idea, a lot of duplicate strings will be generated.
 //
 //    In order to avoid generating duplicate palindromic permutations in the first place itself, as much as possible, we can make use of this idea.
-//    As discussed in the last approach, we swap the current element with all the elements lying towards its right to generate the permutations. Before swapping, we can check if the elements being swapped are equal. If so, the permutations generated even after swapping the two will be duplicates(redundant). Thus, we need not proceed further in such a case.
+//    As discussed in the last approach, we swap the current element with all the
+//    elements lying towards its right to generate the permutations. Before swapping, we can check if the elements being swapped are equal. If so, the permutations generated even after swapping the two will be duplicates(redundant). Thus, we need not proceed further in such a case.
 //
 //    Time complexity : O(n/2+1)!
 //
@@ -78,15 +81,15 @@ public class PalindromicPermutation {
         s[i] = s[j];
         s[j] = temp;
     }
-    void permute(char[] s, int l, char ch) {
-        if (l == s.length) {
+    void permute(char[] s, int first, char ch) {
+        if (first == s.length) {
             set.add(new String(s) + (ch == 0 ? "" : ch) + new StringBuffer(new String(s)).reverse());
         } else {
-            for (int i = l; i < s.length; i++) {
-                if (s[l] != s[i] || l == i) {
-                    swap(s, l, i);
-                    permute(s, l + 1, ch);
-                    swap(s, l, i);
+            for (int i = first; i < s.length; i++) {
+                if (s[first] != s[i] || first == i) {
+                    swap(s, first, i);
+                    permute(s, first + 1, ch);
+                    swap(s, first, i);
                 }
             }
         }

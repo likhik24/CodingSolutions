@@ -1,4 +1,6 @@
-class Solution {
+package Arrays;
+
+public class ReversePairs {
     // 1 3 2 3 1
     public int reversePairs(int[] nums) {
         //reverse pairs are nums which are in decreasing order and nums[i] > 2*nums[j]
@@ -19,23 +21,23 @@ class Solution {
     int mid=(r-l)/2+l;
     int x=mergeSort(arr,l,mid);
     int y=mergeSort(arr,mid+1,r);
-    int z=merge(arr,l,mid+1,r);
+    int z=merge(arr,l,mid,r);
     return x+y+z;
 }
 
-public int merge(int[] arr,int l,int y,int r)
+public int merge(int[] arr,int l,int mid,int r)
 {
     int i=l;
-    int j=y;
+    int j=mid;
     int count=0;
     int aux[]=new int[r-l+1];
     int k=0;
-    while(i<=y-1&&j<=r)
+    while(i<=mid&&j<=r)
     {
         
         if((long)arr[i]>(long)(2*(long)arr[j]))
         {
-            count+=y-i;
+            count+=mid-i;
             j++;
         }
         else{
@@ -45,9 +47,9 @@ public int merge(int[] arr,int l,int y,int r)
 
 
     i=l;
-    j=y;
+    j=mid;
 
-    while(i<=y-1&&j<=r)
+    while(i<=mid&&j<=r)
     {
         if(arr[i]<arr[j])
         {
@@ -62,7 +64,7 @@ public int merge(int[] arr,int l,int y,int r)
         }
     }
     
-    while(i<=y-1){
+    while(i<=mid-1){
          aux[k]=arr[i];
             i++;
             k++;
@@ -70,10 +72,7 @@ public int merge(int[] arr,int l,int y,int r)
     while(j<=r)
     {
        aux[k]=arr[j];
-            // if(arr[i]>2*arr[j])
-            // {
-            //     count+=y-i;
-            // }
+
             k++;
             j++;  
     }

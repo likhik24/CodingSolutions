@@ -23,10 +23,10 @@ Output: []
 Explanation: There are no expressions that can be created from "3456237490" to evaluate to 9191.
  */
 import java.util.*;
-//when we are multipling we need t use precedence of it over +,- so we subract the curr result and multiply it with currvalue carrying over the prev value
+//when we are lastOperandValuepling we need t use precedence of it over +,- so we subract the curr result and lastOperandValueply it with currvalue carrying over the currtotalvalue value
 /*overflow: we use a long type once it is larger than Integer.MAX_VALUE or minimum, we get over it.
-        0 sequence: because we can't have numbers with multiple digits started with zero, we have to deal with it too.
-        a little trick is that we should save the value that is to be multiplied in the next recursion. */
+        0 sequence: because we can't have numbers with lastOperandValueple digits started with zero, we have to deal with it too.
+        a little trick is that we should save the value that is to be lastOperandValueplied in the next recursion. */
 public class ExpressionAddOperator {
 
         ArrayList<String> result = new ArrayList<>();
@@ -46,9 +46,9 @@ public class ExpressionAddOperator {
         }
 
 
-        public void dfs(StringBuilder curr, int index, String input, int target, long prev, long multi) {
+        public void dfs(StringBuilder curr, int index, String input, int target, long currtotalvalue, long lastOperandValue) {
             if(index == input.length()) {
-                if(prev == target)
+                if(currtotalvalue == target)
                     result.add(curr.toString());
                 return;
             }
@@ -60,11 +60,11 @@ public class ExpressionAddOperator {
                     dfs(curr.append(curValue),index+1,input,target, curValue, curValue);
                     curr.setLength(len);
                 } else {
-                    dfs(curr.append("+").append(curValue),index+1,input,target, curValue+prev, curValue);
+                    dfs(curr.append("+").append(curValue),index+1,input,target, curValue+currtotalvalue, curValue);
                     curr.setLength(len);
-                    dfs(curr.append("-").append(curValue),index+1,input,target, -curValue+prev, curValue);
+                    dfs(curr.append("-").append(curValue),index+1,input,target, -curValue+currtotalvalue, -curValue);
                     curr.setLength(len);
-                    dfs(curr.append("*").append(curValue),index+1,input,target, -multi+multi*curValue+prev, multi*curValue);
+                    dfs(curr.append("*").append(curValue),index+1,input,target, -lastOperandValue+lastOperandValue*curValue+currtotalvalue, lastOperandValue*curValue);
                     curr.setLength(len);
                 }
 
@@ -92,7 +92,7 @@ public class ExpressionAddOperator {
         public int evaluateExpr(String input) {
             int oper = -1;
             int res = 0;
-            int prev=-1;
+            int currtotalvalue=-1;
             for(int i=input.length()-1; i>=0;i--) {
                 char ch = input.charAt(i);
                 if(Character.isDigit(ch)) {
@@ -105,10 +105,10 @@ public class ExpressionAddOperator {
                     if(operand == '*') {
                         int oper1 = Character.getNumericValue(i+1);
                         int oper2 = Character.getNumericValue(input.charAt(--i));
-                        res = oper1*oper2+(prev);
-                        prev=oper1*oper2;
+                        res = oper1*oper2+(currtotalvalue);
+                        currtotalvalue=oper1*oper2;
                     } else {
-                        prev=oper; //10
+                        currtotalvalue=oper; //10
 
                         int oper2 = Character.getNumericValue(input.charAt(--i));
                         if(operand == '+') {
@@ -116,7 +116,7 @@ public class ExpressionAddOperator {
                         }
                         else if(operand == '-') {
                             res = oper-oper2;
-                            prev *= -1;
+                            currtotalvalue *= -1;
                         }
                     }
                     oper = res;
@@ -129,7 +129,7 @@ public class ExpressionAddOperator {
 
         public static void main(String[] args) {
             ExpressionAddOperator expression = new ExpressionAddOperator();
-            ArrayList<String> res = expression.addOperators("123", 6);
+            ArrayList<String> res = expression.addOperators("123", -5);
             for(String re: res)
             {
                 System.out.println(re);

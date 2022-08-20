@@ -69,6 +69,7 @@ public class PyramidTransitionMatrix {
         }
         List<String> ls = new ArrayList<>();
         ls = getList(prefixSuffixBlocks, bottom, 0, new StringBuilder(), ls); //get possible list of allow substrings
+
         for(String s: ls) {
             if(helper(prefixSuffixBlocks, s, allowed)) return true; //if we can use atleast one bottom from one of these to form pyramid, that is valid result
         }

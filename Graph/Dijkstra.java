@@ -21,15 +21,66 @@ public class Dijkstra {
             }
         }
     }
+
+    static class AdjListNode {
+        int vertex, weight;
+
+        AdjListNode(int v, int w)
+        {
+            vertex = v;
+            weight = w;
+        }
+        int getVertex() { return vertex; }
+        int getWeight() { return weight; }
+    }
+
+    // Function to find the shortest distance of all the
+    // vertices from the source vertex S.
+    public static int[] dijkstraSimplified(
+            int V, ArrayList<ArrayList<AdjListNode> > graph,
+            int src)
+    {
+        int[] distance = new int[V];
+        for (int i = 0; i < V; i++)
+            distance[i] = Integer.MAX_VALUE;
+        distance[src] = 0;
+
+        PriorityQueue<AdjListNode> pq = new PriorityQueue<>(
+                Comparator.comparingInt(AdjListNode::getWeight));
+        pq.add(new AdjListNode(src, 0));
+
+        while (pq.size() > 0) {
+            AdjListNode current = pq.poll();
+
+            for (AdjListNode n :
+                    graph.get(current.getVertex())) {
+                if (distance[current.getVertex()]
+                        + n.getWeight()
+                        < distance[n.getVertex()]) {
+                    distance[n.getVertex()]
+                            = n.getWeight()
+                            + distance[current.getVertex()];
+                    pq.add(new AdjListNode(
+                            n.getVertex(),
+                            distance[n.getVertex()]));
+                }
+            }
+        }
+        // If you want to calculate distance from source to
+        // a particular target, you can return
+        // distance[target]
+        return distance;
+    }
+
+
     // Timecomplexity : O(ELogv)
     static int[] dijkstra(
             int V,
             ArrayList<ArrayList<ArrayList<Integer>>> adj,
             int S) {
-        boolean[] visited = new boolean[V];
         HashMap<Integer, Node> map = new HashMap<>();
         PriorityQueue<Node> q = new PriorityQueue<>();
-
+        boolean[] visited = new boolean[V];
         map.put(S, new Node(S, 0));
         q.add(new Node(S, 0));
 

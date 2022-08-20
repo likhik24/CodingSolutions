@@ -20,7 +20,7 @@ public class FindElemThatOnlyAppearsOnce {
 
             /*"one & arr[i]" gives the bits that are
             there in both 'ones' and new element from arr[].
-            We add these bits to 'twos' using bitwise OR*/
+            We add these bits to 'twos' using bitwise XOR*/
             ones = ones ^ arr[i];
 
             /* The common bits are those bits which appear third time
