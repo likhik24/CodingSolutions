@@ -26,8 +26,38 @@ package Tree;
 //
 
 //we can do postorder traversal and store existing result to find exact path match and once we found path matching we can add the node
-
+import java.util.*;
 public class FindDuplicateSubTrees {
+    class TreeNode {
+        TreeNode left;
+        TreeNode right;
+        int val;
+    }
 
+        List<TreeNode> result;
+        HashMap<String,Integer> map = new HashMap<>();
+        public boolean isLeaf(TreeNode root) {
+            return root.left == null && root.right == null;
+        }
+
+        public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
+            result = new ArrayList<>();
+            // search(root);
+            findDuplicates(root, result);
+            return result;
+        }
+        public String findDuplicates(TreeNode root1, List<TreeNode> result) {
+            if(root1 == null)
+                return "";
+
+            StringBuilder sb = new StringBuilder();
+            sb.append(findDuplicates(root1.left, result) + "-");
+            sb.append(findDuplicates(root1.right, result)+ "-");
+            sb.append(root1.val);
+            map.put(String.valueOf(sb), map.getOrDefault(String.valueOf(sb),0)+1);
+            if(map.get(String.valueOf(sb)) == 2)
+                result.add(root1);
+            return sb.toString();
+        }
 
 }

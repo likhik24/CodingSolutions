@@ -48,7 +48,7 @@ public class CheckExistenceOfEdgeLimitedPaths {
             for (int i = 0; i < m; i++) {
                 sortedQueries[i] = new int[]{queries[i][0], queries[i][1], queries[i][2], i};
             }
-            Arrays.sort(sortedQueries, (a,b) -> a[2] - b[2]);
+            Arrays.sort(sortedQueries, Comparator.comparingInt(a -> a[2]));
 
 
             // sort edgeList by increasing weight

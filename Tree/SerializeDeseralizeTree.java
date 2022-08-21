@@ -54,7 +54,7 @@ public class SerializeDeseralizeTree {
         public TreeNode deserialize(String data) {
             System.out.println(data);
             String[] nodes = data.split(",");
-            List<String> nodesList = new LinkedList<String>(Arrays.asList(nodes));
+            List<String> nodesList = new LinkedList<>(Arrays.asList(nodes));
             rdeserialize(nodesList);
             return root;
         }

@@ -106,7 +106,7 @@ public class CountWordsAfterAddingALetter {
             char[] wordArr = word.toCharArray();
             Arrays.sort(wordArr);
             String sortedTarget = String.valueOf(wordArr);
-            for(int i=0; i< sortedTarget.length(); i++) {
+            for(int i=sortedTarget.length()-1; i>=0; i--) {
                 String substring = sortedTarget.substring(0, i) + sortedTarget.substring(i+1);
                 if(trie.isExists(substring, sortedTarget.charAt(i))) {
                     count++;

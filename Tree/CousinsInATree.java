@@ -22,8 +22,8 @@ public class CousinsInATree {
         public boolean isCousins(TreeNode root, int x, int y) {
             Queue<TreeNode> queue = new LinkedList<>();
             queue.add(root);
-            boolean foundSibling = false;
-            while(!queue.isEmpty() && !foundSibling) { //1
+            boolean foundCousin = false;
+            while(!queue.isEmpty() && !foundCousin) { //1
                 int size=queue.size(); //2 3 4
                 boolean visitedR = false;
                 for(int i=0;i<size;i++) {
@@ -33,10 +33,10 @@ public class CousinsInATree {
                         continue;
                     }
                     if(curr.val == x || curr.val == y) {
-                        if(foundSibling & visitedR )
+                        if(foundCousin & visitedR )
                             return true;
-                        else if(!foundSibling) {
-                            foundSibling = true;
+                        else if(!foundCousin) {
+                            foundCousin = true;
                             visitedR = false;
                         }
                         else {
