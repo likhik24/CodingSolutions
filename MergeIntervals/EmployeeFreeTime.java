@@ -40,7 +40,7 @@ public class EmployeeFreeTime {
             intervals.addAll(interv);
         }
 
-        Collections.sort(intervals, (interv1, interv2) -> Integer.compare(interv1.start, interv2.start));
+        Collections.sort(intervals, Comparator.comparingInt(interv -> interv.start));
         if(intervals.size() <= 1)
             return new ArrayList<Interval>();
 

@@ -41,7 +41,7 @@ public class MAximumTileAReaCoveredByCarpet {
         //we keep two pointers left and right to move right pointer when we can pick the entire right tile for carpet ,
         //and add it to covered area, when we cant add right tile to carpet area , then we can check until how much distance of right tile partially can we add to our cover
         // and pick that much distance to cover and update our maxLen and remove left carpet area from our covered zone as it cant cover the right tile
-        Arrays.sort(tiles, (a,b)->Integer.compare(a[0],b[0])); //{1,5},{10,11},{12,18} ,
+        Arrays.sort(tiles, Comparator.comparingInt(a -> a[0])); //{1,5},{10,11},{12,18} ,
         while(left<tiles.length && right < tiles.length & left<=right) {
             if(tiles[left][0]+carpetLen>tiles[right][1]) {
                 cover += tiles[right][1]-tiles[right][0]+1;

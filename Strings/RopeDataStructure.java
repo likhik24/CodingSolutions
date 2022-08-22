@@ -72,7 +72,7 @@ class Rope {
             System.out.println(root.length);
             System.out.println(root.left);
             System.out.println(root.right);
-           return (char)0 ; //return root.value.charAt(index);
+           return root.value.charAt(index);
         }
     }
 

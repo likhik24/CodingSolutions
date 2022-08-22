@@ -58,6 +58,8 @@ public class DetectSquares {
             Iterator<Integer> r = rows.iterator();
             while(r.hasNext()) {
                 int row = r.next();
+                if(row == point[0])
+                    continue;
                 System.out.println(row);
                 //right side points
                 int size = point[0]-row;

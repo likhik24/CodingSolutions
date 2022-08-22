@@ -73,7 +73,10 @@ public class StudentAttendanceRecord {
         //above algorithm time complexity is O(3^N) and Space complexity O(n)
         //we can optimize it further by considering all length strings we can from with L and P as there can be only one A in the string
         // if we have number of combinations for Lp as f(n) , For combinations with A, it will be F(i-1)*F(n-i) where charAt index i is A;
-        //ALSO THERE IS RECURRENCE RELATION BETWEEN F(N) AND F(N-1) AS number of combinations we can form with n-1 length strings *2 will be number of combinations with n ( the last one lteer can be L/p which makes it 2 COMBINATIONS*F(N-1) , NOW F(N-1) CAN BE FORMED WITH 4 N-3 COMBINATIONS (WHERE LAST TWO LETTERS CAN BE PP,LL,LP,PL ) SO 4*(N-3) OUT OF WHICH EACH n-3 CAN BE CONVERTED INTO N-4 + 2 ( LAST ONE CHAR CAN BE l/p) BUT  IF (N-4) IS VALID HAVING L IN END and we take last char in n-3 as L and have last two chars in N-1 as LL ,this is invalid so we need to remove 1 possibility of (N-4) , it should be (N-4)+1 where last character is always P ( so the last 2 characters can be LL/PP/LP/PL)
+        //ALSO THERE IS RECURRENCE RELATION BETWEEN F(N) AND F(N-1) AS number of combinations we can form with n-1 length strings *2 will be number of combinations with n ( the last one lteer can be L/p which makes it 2 COMBINATIONS*F(N-1) ,
+    // NOW F(N-1) CAN BE FORMED WITH 4 N-3 COMBINATIONS (WHERE LAST TWO LETTERS CAN BE PP,LL,LP,PL ) SO 4*(N-3) OUT OF WHICH EACH n-3 CAN BE CONVERTED INTO N-4 + 2 ( LAST ONE CHAR CAN BE l/p) BUT  IF (N-4)
+    // IS VALID HAVING L IN END and we take last char in n-3 as L and have last two chars in N-1 as LL ,this is invalid so we need to remove 1 possibility of (N-4) ,
+    // it should be (N-4)+1 where last character is always P ( so the last 2 characters can be LL/PP/LP/PL)
         // so f(n) = 2*F(n-1) - F(n-4)
 
         // we can use dynamic programming memorization to compute and store results for optimization

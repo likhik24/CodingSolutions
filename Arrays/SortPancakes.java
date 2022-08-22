@@ -47,14 +47,16 @@ public class SortPancakes {
             if (value == arr[i])
                 return i;
         }
-        return 0;
+        return -1;
     }
-    public int[] reverse(int[] arr , int index) {
-        int left=0;
-        while(index>left) {
-            swap(arr, index--, left++);
+    public void reverse(int[] sublist , int k) {
+        int i = 0;
+        while (i < k / 2) {
+            int temp = sublist[i];
+            sublist[i] = sublist[k - i - 1];
+            sublist[k - i - 1] = temp;
+            i += 1;
         }
-        return arr;
     }
 
     public void swap(int[] arr, int i, int j) {
@@ -65,15 +67,16 @@ public class SortPancakes {
 
     public List<Integer> pancakeSort(int[] arr) {
         List<Integer> result = new ArrayList<>();
-        for (int valueSort = arr.length - 1; valueSort > 0; valueSort--) {
+        for (int valueSort = arr.length ; valueSort > 0; valueSort--) {
             int indexOfValue = findIndex(valueSort, arr);
-            if(indexOfValue != valueSort ) {
-                if(indexOfValue != 0) {
-                    result.add(indexOfValue);
-                    reverse(arr, indexOfValue);
+            if(indexOfValue != valueSort-1 ) {
+                if (indexOfValue != 0) {
+                    result.add(indexOfValue+1);
+                    reverse(arr, indexOfValue+1);
                 }
-                reverse(arr, valueSort-1);
-                result.add(valueSort-1);
+
+                reverse(arr, valueSort);
+                result.add(valueSort);
             }
 
         }
@@ -84,7 +87,7 @@ public class SortPancakes {
 
     public static void main(String[] args) {
         SortPancakes sort = new SortPancakes();
-        List<Integer> result = sort.pancakeSort(new int[] { 3,2,1,4});
+        List<Integer> result = sort.pancakeSort(new int[] { 3,2,4,1});
         for(int r: result)
             System.out.println(r);
     }

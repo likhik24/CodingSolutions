@@ -80,22 +80,23 @@ public class OddEvenJump {
                 /*
             you jump to the index j such that arr[i] <= arr[j] and arr[j] is the smallest possible  value.
             */
-                if(map.floorEntry(arr[i]) != null)
-                    dp[i][0] = dp[map.floorEntry(arr[i]).getValue()][1];
+                if(map.ceilingEntry(arr[i]) != null)
+                    dp[i][0] = dp[map.ceilingEntry(arr[i]).getValue()][1];
 
                /*
             you jump to the index j such that arr[i] >= arr[j] and arr[j] is the largest possible value
             */
-                if(map.ceilingEntry(arr[i]) != null)
-                    dp[i][1] = dp[map.ceilingEntry(arr[i]).getValue()][0];
+                if(map.floorEntry(arr[i]) != null)
+                    dp[i][1] = dp[map.floorEntry(arr[i]).getValue()][0];
                 map.put(arr[i], i);
 
-                // add to answer because first jump will always be an even jump
-                if(dp[i][1])
+                // add to answer because first jump will always be an odd jump
+                if(dp[i][0])
                     count++;
 
             }
             return count;
         }
+
 
 }

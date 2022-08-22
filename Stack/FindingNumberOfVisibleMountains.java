@@ -23,6 +23,40 @@ public class FindingNumberOfVisibleMountains {
             return pb[0]+pb[1] <= pa[0]+pa[1] && pb[1]-pb[0] <= pa[1]-pa[0];
         }
 
+        public int visibleMountainsUsingPqueue(int[][] peaks) {
+            for(int i=0;i<peaks.length;i++) {
+
+                int temp = peaks[i][1];
+                peaks[i][1] += peaks[i][0];
+                peaks[i][0] -= temp;
+            }
+            Arrays.sort(peaks, (first, second) -> {
+                if(first[0] == second[0])
+                    return first[1]-second[1];
+                return first[0]-second[0];
+            });
+            int size=0;
+            int i=0;
+            while(i<peaks.length) {
+                size++;
+                if(i+1 == peaks.length)
+                    return size;
+                if(peaks[i+1][0] == peaks[i][0]) {
+                    //our current mountain cant be visible as they start at same point
+                    size--;
+
+                }
+                int currMountainPeak = peaks[i][1];
+                while(i+1 < peaks.length && peaks[i+1][1] <= currMountainPeak ) {
+                    i++;
+                }
+                i++;
+            }
+            return size;
+
+        }
+
+
         public int visibleMountains(int[][] peaks) {
             Stack<int[]> stack = new Stack<>();
             HashSet<Integer>set = new HashSet<>();

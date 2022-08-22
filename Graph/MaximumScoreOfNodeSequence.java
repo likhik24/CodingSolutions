@@ -55,7 +55,7 @@ public class MaximumScoreOfNodeSequence {
         // TreeMap<Integer, TreeSet<int[]>> indegreeMap = new TreeMap<>(Collections.reverseOrder());
         //  int[] indegree = new int[scores.length];
         for(int i=0;i<scores.length;i++)
-            adjList.add(new PriorityQueue<>((a,b) -> Integer.compare(a.weight,b.weight)));
+            adjList.add(new PriorityQueue<>(Comparator.comparingInt(a -> a.weight)));
         for(int[] edge: edges)
         {
 

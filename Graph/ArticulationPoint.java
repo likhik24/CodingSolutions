@@ -38,17 +38,14 @@ public class ArticulationPoint {
         for(int neighbor: adjList.get(source)) {
             children++;
             if(neighbor == parent) continue;
-           else if(visited[neighbor]) {
-                lowestchildren[source] = Math.min(lowestchildren[neighbor], lowestchildren[source]);
-            }
-            else{
+           else if(!visited[neighbor]) {
                 findDiscoveryTime(adjList, visited, neighbor, discTime, source, isAP);
                 if (parent != -1 && lowestchildren[neighbor] >= discTime[source]) {
                     isAP[source] = true;
                 }
-                lowestchildren[source] = Math.min(lowestchildren[neighbor], lowestchildren[source]);
             }
 
+            lowestchildren[source] = Math.min(lowestchildren[neighbor], lowestchildren[source]);
         }
 
         // If u is root of Graph.DFS tree and has two or more children.

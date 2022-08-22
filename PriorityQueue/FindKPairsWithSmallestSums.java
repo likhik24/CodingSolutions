@@ -33,17 +33,17 @@ import java.util.*;
 
 public class FindKPairsWithSmallestSums {
     class Pair {
-        int[] arr;
+        int[] numsindextopick;
         Pair(int i, int j)
         {
-            arr = new int[2];
-            arr[0] = i;
-            arr[1] = j;
+            numsindextopick = new int[2];
+            numsindextopick[0] = i; //index of elem in nums1
+            numsindextopick[1] = j; //index of elem in nums2
         }
     }
     public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
         HashSet<String> set = new HashSet<>();
-        PriorityQueue<Pair> pq = new PriorityQueue<>((a, b) -> (nums1[a.arr[0]] + nums2[a.arr[1]]) - (nums1[b.arr[0]] + nums2[b.arr[1]]));
+        PriorityQueue<Pair> pq = new PriorityQueue<>(Comparator.comparingInt(a -> (nums1[a.numsindextopick[0]] + nums2[a.numsindextopick[1]])));
 
         for(int i=0;i<nums1.length && i<k;i++) {
             pq.add(new Pair(i,0));
@@ -53,11 +53,11 @@ public class FindKPairsWithSmallestSums {
         while(k-- > 0 && !pq.isEmpty()) {
             Pair curr = pq.poll();
             List<Integer> res = new ArrayList<>();
-            res.add(nums1[curr.arr[0]]);
-            res.add(nums2[curr.arr[1]]);
+            res.add(nums1[curr.numsindextopick[0]]);
+            res.add(nums2[curr.numsindextopick[1]]);
             result.add(res);
-            if(curr.arr[1]+1 < nums2.length)
-                pq.add(new Pair(curr.arr[0], curr.arr[1]+1));
+            if(curr.numsindextopick[1]+1 < nums2.length)
+                pq.add(new Pair(curr.numsindextopick[0], curr.numsindextopick[1]+1));
         }
 
         return result;

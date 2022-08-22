@@ -60,7 +60,7 @@ public class LongestAbsoulteFilePath {
             int level = st.lastIndexOf('\t')+1; //0 1 // number of "\t"
 
             while(level+1 < stack.size()) stack.pop(); // find parent
-            int len = stack.peek() + st.length()-level+1; //4  // remove "/t", add"/"
+            int len = stack.peek() + st.length()-(level-1); //4  // remove "/t", add"/"
             stack.push(len); //4
             if(st.indexOf('.') != -1)
                 maxLength = Math.max(maxLength, stack.peek()-1);

@@ -122,7 +122,7 @@ public class SingleThreadedCPU {
 
                 int processTime = nextTask.peek()[1];
                 int index = nextTask.peek()[2];
-                nextTask.remove();
+                nextTask.poll();
 
                 // Complete this task and increment currTime.
                 currTime += processTime;

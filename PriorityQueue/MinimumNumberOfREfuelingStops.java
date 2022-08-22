@@ -35,7 +35,7 @@ public class MinimumNumberOfREfuelingStops {
             if(stations.length == 0)
                 return startFuel >= target ? 0 : -1;
 
-            PriorityQueue<Integer> fuelsHeap = new PriorityQueue<Integer>(Collections.reverseOrder());
+            PriorityQueue<Integer> fuelsHeap = new PriorityQueue<>(Collections.reverseOrder());
             //start dest
             //two decisons take stop , not take stop
             //if startfuel > stop

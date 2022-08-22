@@ -17,7 +17,9 @@ import java.util.*;
 //
 //        Let's do a dry run of an example problem with sample meeting times and see what our algorithm should be able to do efficiently.
 //
-//        We will consider the following meeting times for our example (1, 10), (2, 7), (3, 19), (8, 12), (10, 20), (11, 30). The first part of the tuple is the start time for the meeting and the second value represents the ending time. We are considering the meetings in a sorted order of their start times. The first diagram depicts the first three meetings where each of them requires a new room because of collisions.
+//        We will consider the following meeting times for our example (1, 10), (2, 7), (3, 19), (8, 12), (10, 20), (11, 30). The first part of the tuple is
+//        the start time for the meeting and the second value represents the ending time. We are considering the meetings in a sorted order of their start times.
+//        The first diagram depicts the first three meetings where each of them requires a new room because of collisions.
 //
 //
 //        The next 3 meetings start to occupy some of the existing rooms. However, the last one requires a new room altogether and overall we have to use 4 different rooms to accommodate all the meetings.
@@ -126,12 +128,12 @@ public class MinimumMeetingRooms {
             PriorityQueue<Integer> allocator =
                     new PriorityQueue<Integer>(
                             intervals.length,
-                            (a, b) -> a - b);
+                            Comparator.comparingInt(a -> a));
 
             // Sort the intervals by start time
             Arrays.sort(
                     intervals,
-                    (a, b) -> a[0] - b[0]);
+                    Comparator.comparingInt(a -> a[0]));
 
             // Add the first meeting
             allocator.add(intervals[0][1]);

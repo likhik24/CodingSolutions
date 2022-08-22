@@ -105,7 +105,7 @@ public class PrimsAlgorithmMST {
             // Use TreeSet instead of PriorityQueue as the
             // remove function of the PQ is O(n) in java.
             TreeSet<node> queue
-                    = new TreeSet<node>(new comparator());
+                    = new TreeSet<>(new comparator());
 
             for (int o = 0; o < graph.V; o++)
                 queue.add(e[o]);

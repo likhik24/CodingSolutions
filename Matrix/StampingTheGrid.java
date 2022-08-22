@@ -55,7 +55,9 @@ public class StampingTheGrid {
 
         }
 
-        //we marked height of all zeroes to be -zeroes hieght which can be from -1 to -stampheight, now we iterate from row of stampheight-1 to see if grid[i][j] = -stampehight that means htis row can be bottom row of a stamp and also increment count to see if we can form stampwidth worth of 0s in current row consecutively, if we dont find a -stampheight in middle of row we reduce count to 0 as we cannot form a stamp with current cell as bottom most row and left most col, if count == stampswidth we can form the stamp
+        //we marked height of all zeroes to be -zeroes hieght which can be from -1 to -stampheight, now we iterate from row of stampheight-1 to see
+        // if grid[i][j] = -stampehight that means htis row can be bottom row of a stamp and also increment count to see if we can form stampwidth worth of 0s in current row consecutively,
+        // if we dont find a -stampheight in middle of row we reduce count to 0 as we cannot form a stamp with current cell as bottom most row and left most col, if count == stampswidth we can form the stamp
         for(int i=stampHeight-1;i<grid.length;i++) {
             int count = 0;
             for(int j=0;j<cols;j++) {

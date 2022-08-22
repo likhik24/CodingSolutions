@@ -73,7 +73,7 @@ public class StrongPasswordChecker {
                 }
                 for(int i=0;i<arr.length;i++) {
                     if(arr[i] >= 3 && overLen > 0) {
-                        int need = arr[i]-2;
+                        int need = arr[i]-2; // need to remove all chars except 2
                         arr[i] -= overLen;
                         overLen -= need;
                     }

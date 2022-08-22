@@ -38,17 +38,16 @@ public class ArticulationEdges {
         for(int i: connections.get(source)) {
             if(visited[i] && parent == i)
                 continue;
-            else if(visited[i]) {
-                lowestNode[source] = Math.min(lowestNode[i], lowestNode[source]);
-            }
-            else {
+            else if(!visited[i]) {
                 dfs(connections, i, source, visited, result, lowestNode, discoveryTime);
-                if(lowestNode[i] > discoveryTime[source])
+                if (lowestNode[i] > discoveryTime[source])
                     // whenever lowestnode of neighbor > discoverytime[source] this is a articulation edge as disconnecting edge source,i disconnects graph from all vertices after i
 
                     result.add(Arrays.asList(new Integer[]{source, i}));
-                lowestNode[source] = Math.min(lowestNode[i], lowestNode[source]);
             }
+
+            lowestNode[source] = Math.min(lowestNode[i], lowestNode[source]);
+
 
         }
 

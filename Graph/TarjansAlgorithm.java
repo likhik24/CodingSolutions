@@ -39,7 +39,8 @@ public class TarjansAlgorithm {
     }
 
     public void dfs(TreeSet<Integer> visited, int source, int[] ids, int[] lowest_id,ArrayList<ArrayList<Integer>> adjList, Stack<Integer> currVisited) {
-       visited.add(source);
+
+        visited.add(source);
         lowest_id[source] = ids[source] = id++; //to increment lowest_id and id of source to time at which it is visited and increment time
         currVisited.push(source); //0 1 2
 
@@ -65,6 +66,7 @@ public class TarjansAlgorithm {
             sccCount++;
             }
         }
+
 
 
 

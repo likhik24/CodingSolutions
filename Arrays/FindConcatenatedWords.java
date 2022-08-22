@@ -24,7 +24,6 @@ public class FindConcatenatedWords {
         for(String word:words) {
             wordsSet.add(word);
         }
-        ArrayList<ArrayList<String>> k = compositeWordsMap.get("dfg");
         for(String word:words) {
             wordsSet.remove(word);
             findCompositeWords(word, new ArrayList<>(), word, wordsSet, compositeWordsMap);

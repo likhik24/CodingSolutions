@@ -25,8 +25,7 @@ package Matrix;
 //        f(i, j)f(i,j)
 //
 //        then we have the following transition function
-//
-//        f(i, j) = max\{f(x, y)| (x, y)~\mathrm{is~a~neighbor~of} (i, j)~\mathrm{and} ~\mathrm{matrix}[x][y] \gt \mathrm{matrix}[i][j]\} + 1f(i,j)=max{f(x,y)∣(x,y) is a neighbor of(i,j) and matrix[x][y]>matrix[i][j]}+1
+//  f(i,j)=max{f(x,y)∣(x,y) is a neighbor of(i,j) and matrix[x][y]>matrix[i][j]}+1
 //
 //        This formula is the same as used in the previous approaches. With such transition function, one may think that it is possible to use dynamic programming to deduce all the results without employing DFS!
 //
