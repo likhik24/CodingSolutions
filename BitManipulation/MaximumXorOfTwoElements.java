@@ -106,7 +106,7 @@ public class MaximumXorOfTwoElements {
 // ​
 //  .
 
-// And so on, and so forth. The complexity remains linear. One has to perform NN operations to compute prefixes, though the number of prefixes containing L - iL−i bits could not be greater than 2^{L - i}2
+// And so on, and so forth. The complexity remains linear. One has to perform N operations to compute prefixes, though the number of prefixes containing L - i bits could not be greater than 2^{L - i}2
 // L−i
 //  . Hence the check if XOR could have the ith bit to be equal to 1-bit takes 2^{L - i} \times 2^{L - i}2
 // L−i
@@ -143,7 +143,7 @@ public class MaximumXorOfTwoElements {
             int maxXor = 0;
             int currXor;
             Set<Integer> prefixes = new HashSet<>();
-            //we start to find from left most bit that is most signifcant bit which can be xored to 1 and then continue to find other bits which can e xored to 1, we start shifting characters by L-i length to get the leftmost significant bit and compare them to get most number of 1's in the XOR, maxXor contains most number of 1s we found , currXor contains curr max number of 1s we have
+            //we start to find from left most bit that is most significant bit which can be xored to 1 and then continue to find other bits which can e xored to 1, we start shifting characters by L-i length to get the leftmost significant bit and compare them to get most number of 1's in the XOR, maxXor contains most number of 1s we found , currXor contains curr max number of 1s we have
 
             for(int i=L-1; i>=0;i--) {
                 maxXor <<= 1; // this is initially 0 then it becomes 2 if most signifcant digit matches then 110 then 1110

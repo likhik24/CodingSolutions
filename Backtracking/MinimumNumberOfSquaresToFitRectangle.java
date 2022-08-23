@@ -29,7 +29,8 @@ import java.util.*;
 
 public class MinimumNumberOfSquaresToFitRectangle {
 
-//     The basic idea is to fill the entire block bottom up. In every step, find the lowest left unfilled square first, and select a square with different possible sizes to fill it. We maintain a height array (skyline) with length n while dfs. This skyline is the identity of the state.
+//     The basic idea is to fill the entire block bottom up. In every step, find the lowest left unfilled square first, and select a square with different possible sizes to fill it. We maintain a height array (skyline)
+//     with length n while dfs. This skyline is the identity of the state.
 //     The final result we ask for is the minimum number of squares for the state [m, m, m, m, m, m, m] (The length of this array is n).
 //     Of course, backtrack without optimization will have a huge time complexity, but it can be pruned or optimized by the following three methods.
 

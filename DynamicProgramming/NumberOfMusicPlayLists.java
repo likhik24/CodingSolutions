@@ -32,7 +32,8 @@ public class NumberOfMusicPlayLists {
 
 // Algorithm
 
-// Consider dp[i][j]. Last song, we either played a song for the first time or we didn't. If we did, then we had dp[i - 1][j - 1] * (N - j + 1) ways to choose it. If we didn't, then we repeated a previous song in dp[i-1][j] * max(j-K, 0) ways (j of them, except the last K ones played are banned.)
+// Consider dp[i][j]. Last song, we either played a song for the first time or we didn't. If we did, then we had dp[i - 1][j - 1] * (N - j + 1) ways to choose it. If we didn't,
+// then we repeated a previous song in dp[i-1][j] * max(j-K, 0) ways (j of them, except the last K ones played are banned.)
 
         //we have goal positions to fill, we have n songs which need to be played atleast once and k is gap between current song being used again
         //for first n positions in k we can arrange them in 6 different ways
@@ -55,6 +56,7 @@ public class NumberOfMusicPlayLists {
 
             return (int) dp[L][N];
         }
-
+//we have n unique songs, l lenngth goal , if we take this song newly then it mes we have n-j+1 ways to arrange it where j is length of goal ,
+// if we are taking already used song, in j length we can place it after k positions of 1st occurence so we can place at j-k positions dp[i][j] += dp[i-1][j]*Math.max(j-k,0), dp[i][j] = dp[i-1][j-1]*(N-j+1)
 
 }

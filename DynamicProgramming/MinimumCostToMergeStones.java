@@ -1,6 +1,12 @@
 package DynamicProgramming;
 
 /*
+There are n piles of stones arranged in a row. The ith pile has stones[i] stones.
+
+A move consists of merging exactly k consecutive piles into one pile, and the cost of this move is equal to the total number of stones in these k piles.
+
+Return the minimum cost to merge all piles of stones into one pile. If it is impossible, return -1.
+
 Let's first think this problem in a simple way, what if we can only merge 2 adjacent piles into one pile?
 
 For given example [3,2,4,1], we will normally think this as a greedy problem, we always merge two relatively small piles.
@@ -84,51 +90,51 @@ Similar problem include 312. Burst Balloons. They are all dynamic programming pr
 
 
 // Top-Down
-class Solution {
-    int[][][] dp;
-    int max = 99999999;
-    int K;
-
-    public int mergeStones(int[] stones, int K) {
-        this.K = K;
-        int len = stones.length;
-        if ((len - 1) % (K - 1) != 0) {
+  public int mergeStones(int[] stones, int k) {
+        dp = new int[stones.length+1][stones.length+1][k+1];
+        //exxactly k consecutive piles
+        //move cost is total num of stones in these piles
+        //find min cost to merge all piles of stones into one pile
+        //if we take this pile we need to take adjacent pile
+         if ((stones.length - 1) % (k - 1) != 0) {
             return -1;
         }
-        dp = new int[len + 1][len + 1][K + 1];
-        int[] prefixSum = new int[len + 1];
-
-        int i;
-        for (i = 1; i <= len; i++) {
-            prefixSum[i] = prefixSum[i - 1] + stones[i - 1];
-        }
-
-        return getResult(prefixSum, 1, len, 1);
+        ArrayList<Integer> stonesList = new ArrayList<>();
+        //if we take this stone , adjacent k-1 stones take mergecost
+        //if we dont take this stone
+        for(int stone: stones)
+            stonesList.add(stone);
+        int total = minCost(stonesList, k, 0, new ArrayList<>(stonesList), 0);
+        return total == Integer.MAX_VALUE ? -1 : total;
     }
 
-    private int getResult(int[] prefixSum, int left, int right, int piles) {
-        if (dp[left][right][piles] != 0) {
-            return dp[left][right][piles];
+    public int minCost(ArrayList<Integer> stonesList, int k, int index, ArrayList<Integer> currList, int cost) {
+        if(currList.size() == 1)
+        {
+
+            totalCost = Math.max(cost, totalCost);
+            return 0;
         }
-        int res = max;
-        int t;
-        if (left == right) {
-            res = (piles == 1) ? 0 : max;
+
+        if(index >= currList.size() || k>currList.size())
+            return Integer.MAX_VALUE;
+         int takeCost = Integer.MAX_VALUE;
+        int notTakeCost = minCost(stonesList, k, index+1, currList, cost);;
+        if(k+index<= currList.size()) {
+            //dp[index][k+index]
+            int sum= currList.subList(index, Math.min(k+index, currList.size())).stream().mapToInt(Integer::intValue).sum();
+            ArrayList<Integer> sub = new ArrayList<>(currList);
+            sub.removeAll(currList.subList(index, Math.min(k+index, currList.size())));
+            sub.add(sum);
+            int cost1 =  minCost(stonesList, k, 0, sub, cost);
+            if(cost1 != Integer.MAX_VALUE)
+                takeCost = sum + cost1;
+            //System.out.println(takeCost);
         }
-        else {
-            if (piles == 1) {
-                res = getResult(prefixSum, left, right, K) + prefixSum[right] - prefixSum[left - 1];
-            }
-            else {
-                for (t = left; t < right; t++) {
-                    res = Math.min(res, getResult(prefixSum, left, t, piles - 1) + getResult(prefixSum, t + 1, right, 1));
-                }
-            }
-        }
-        dp[left][right][piles] = res;
-        return res;
+
+         //System.out.println("notTake " + notTakeCost);
+        return Math.min(takeCost, notTakeCost);
     }
-}
  */
 public class MinimumCostToMergeStones {
     public int mergeStones(int[] stones, int K) {

@@ -7,7 +7,7 @@ public class BinaryRepOfNumber {
     {
         if (n > 1)
             bin(n >> 1);
-
+        //System.out.println(n);
         System.out.printf("%d", n & 1);
     }
     // Driver code

@@ -53,7 +53,7 @@ Build Single Layer
         00100100  // i.e. 36
         So the question is, with given width and bricks, could we compute number of ways to build one layer?
         Since we know width is no greater than 10, we could just write a for loop from zero to 2^(width - 1) - 1,
-        and for each number we verify it it is possible to build such a layer with given bricks
+        and for each number we verify it is possible to build such a layer with given bricks
 */
 public class NumberOfWaysOfBuildingWalls {
     private ArrayList<Integer> waysOfBuildLayer(int width, boolean[] bricks) {
@@ -65,14 +65,14 @@ public class NumberOfWaysOfBuildingWalls {
         //System.out.println(waysOfSplit);
         ArrayList<Integer> result = new ArrayList<Integer>();
         for (int i = 0; i < waysOfSplit; i++) {
-            if (possibleToBuild(i, bricks, width, waysOfSplit)) result.add(i);
+            if (possibleToBuild(i, bricks, width, waysOfSplit)) { result.add(i); }
         }
         return result;
     }
 
     private boolean possibleToBuild(int split, boolean[] bricks, int width, int waysOfSplit) {
         int wall = split | waysOfSplit;
-        System.out.println(wall);
+       // System.out.println(wall);
         int curr = 1;
         while (wall != 0) {
             if (wall % 2 == 1) {
@@ -146,7 +146,7 @@ public class NumberOfWaysOfBuildingWalls {
 
     public static void main(String[] args) {
         NumberOfWaysOfBuildingWalls ways = new NumberOfWaysOfBuildingWalls();
-        ways.buildWall(2,3,new int[]{1,2});
+            System.out.println(ways.buildWall(4,4,new int[]{1,2}));
     }
 
    /* Complexity

@@ -59,4 +59,16 @@ public class MaximumAndSumArray {
         }
         return res;
     }
+
+   /* /numofslots is 7 we creatr string with 7 2s at each index we can select at most 2 slots
+    for(int i=0;i<numSlots;i++) {
+        //we will try placing number in this slot
+        //so the base is math.pow(10,i)
+        if(rooms%base != 0) {
+        res -= base;
+        result = Math.max(result, nums[index]&i + dp(nums, index+1, numSlots, res(rooms))
+        every num can take any slot and for next numbers we need to decrement slot number we can try all combinations of placing num
+        }
+    }
+    return result; */
 }

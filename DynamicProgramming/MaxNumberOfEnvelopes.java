@@ -25,7 +25,9 @@ public class MaxNumberOfEnvelopes {
             int[] dp = new int[nums.length];
             int lengthOfIncreasingSequence = 0;
             for (int num : nums) {
-                int i = Arrays.binarySearch(dp, 0, lengthOfIncreasingSequence, num); // i will. output (-k-1) where k is insertion point of num in array if this -(output+1) which will give us exact index is in sync with current len like index=length of sequence then we increment length, otherwise this elem doesnot fit in the sequence so we wont increment length;
+                int i = Arrays.binarySearch(dp, 0, lengthOfIncreasingSequence, num);
+                // i will. output (-k-1) where k is insertion point of num in array if this -(output+1)
+                // which will give us exact index is in sync with current len like index=length of sequence then we increment length, otherwise this elem doesnot fit in the sequence so we wont increment length;
                 System.out.println(i + " " + num);
                 if (i < 0) {
                     i = -(i + 1);

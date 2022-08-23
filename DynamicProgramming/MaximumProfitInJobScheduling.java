@@ -51,7 +51,7 @@ public class MaximumProfitInJobScheduling {
             for(int i=0;i<startTime.length;i++) {
                 scheduling.add(new JobSchedule(startTime[i], endTime[i],profit[i]));
             }
-            Collections.sort(scheduling, (a,b) -> Integer.compare(a.startTime, b.startTime));
+            Collections.sort(scheduling, Comparator.comparingInt(a -> a.startTime));
 
             int i=0;
             for(JobSchedule schedule: scheduling) {
