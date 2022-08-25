@@ -63,7 +63,7 @@ public class MinimumNumberOfSquaresToFitRectangle {
         public void dfs(int n, int m, int count, int[] height) {
             if(count >= maxCount)
                 return;
-            boolean isFull = true; //to check if already height m square is filled in the height and return as we start from lowest and go alll the way up
+            boolean isFull = true; //to check if already height of all n rows square is filled in the height and return as we start from lowest and go alll the way up
             int minHeight = Integer.MAX_VALUE;
             int pos = -1;
             for(int i=1;i<height.length;i++) {
