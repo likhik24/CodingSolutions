@@ -3,6 +3,7 @@ import java.util.*;
 
 class MyHashMap {
     class Pair<I extends Number, I1 extends Number> {
+        //test push
         int first;
         int second;
         Pair(int first, int second) {
