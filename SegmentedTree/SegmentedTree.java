@@ -48,6 +48,7 @@ int[] segmentTreeArray;
        update(0, n-1, 0, index, val);
     }
 
+    // if left < start || right > end
     public int getSumQuery(int left, int right) {
         return query(0, n-1, 0, left, right);
     }

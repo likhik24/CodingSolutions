@@ -51,7 +51,7 @@ public class WordBreak {
             int j = i;
             Trie node = root;
           //  node.childNodeMap.keySet().forEach( i1 -> System.out.print(i1 + " "));
-            node.childNodeMap.get('i').childNodeMap.keySet().forEach( i1 -> System.out.print(i1 + " "));
+
             while (j<word.length() && node.childNodeMap.get(word.charAt(j)) != null) {
 
                 node = node.childNodeMap.get(word.charAt(j++));
