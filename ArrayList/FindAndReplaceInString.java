@@ -57,10 +57,11 @@ public class FindAndReplaceInString {
             int start = 0;
 
             for(Point r : res) {
-                if(start < r.index)
+                if(start < r.index) {
                     result.append(s.substring(start, r.index));
                 result.append(r.target);
                 start = r.index+r.source.length();
+                } else return 
             }
 
             if(s.length() > start) {
