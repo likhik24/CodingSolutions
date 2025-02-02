@@ -22,6 +22,12 @@ package Graph;
 //        Explanation: We have two possibilities: to end at node 3, or to loop over node 1 and node 2 indefinitely.
 import java.util.*;
 public class AllPathsFromSourceToDestination {
+    //if all paths from source lead to destination
+    //do dfs if any dfs doesnot cover destination return false
+    //adjlistmap for source do dfs
+    //mark visited in current iter a->b->c->b->e
+    //so we use backtrack to add current nodes, remove them after dfs
+    //once the node has no children or node is visited,  we check if visited contains destination else false
     enum Color {
         //WHITE,
         GRAY,

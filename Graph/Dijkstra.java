@@ -3,127 +3,53 @@ package Graph;
 import java.util.*;
 
 public class Dijkstra {
-    static class Node implements Comparable<Node> {
+    static class Node implements Comparable<Node>{
         int v;
         int distance;
-
-        public Node(int v, int distance) {
+        Node(int v, int distance) {
             this.v = v;
             this.distance = distance;
         }
-
-        @Override
-        public int compareTo(Node n) {
-            if (this.distance <= n.distance) {
-                return -1;
-            } else {
-                return 1;
-            }
-        }
+    @Override
+    public int compareTo( Node b) {
+        return this.distance - b.distance;
+    }
     }
 
-    static class AdjListNode {
-        int vertex, weight;
+    public static int[] dijkstra(int vertices, ArrayList<ArrayList<ArrayList<Integer> > > adj, int source) {
 
-        AdjListNode(int v, int w)
-        {
-            vertex = v;
-            weight = w;
+      PriorityQueue<Node> queue = new PriorityQueue<>();
+      queue.add(new Node(source, 0));
+      int[] distances = new int[vertices];
+      Arrays.fill(distances, Integer.MAX_VALUE);
+      distances[source] = 0;
+    HashSet<Integer> visitedSet = new HashSet<>();
+ 
+      while(!queue.isEmpty()) {
+        Node curr = queue.poll();
+        if(visitedSet.contains(curr.v))
+        continue;
+        visitedSet.add(curr.v);
+
+        ArrayList<ArrayList<Integer>> edges = adj.get(curr.v);
+        for(ArrayList<Integer> edge: edges) {
+            int vertex=  edge.get(0);
+            int distance = edge.get(1);
+            if(distances[vertex] > distance+distances[curr.v])
+              { 
+                distances[vertex] = distance+distances[curr.v];
+                
+              }
+              queue.add(new Node(vertex, distances[vertex]));
+
         }
-        int getVertex() { return vertex; }
-        int getWeight() { return weight; }
+      }
+      return distances;
+
+
+
     }
 
-    // Function to find the shortest distance of all the
-    // vertices from the source vertex S.
-    public static int[] dijkstraSimplified(
-            int V, ArrayList<ArrayList<AdjListNode> > graph,
-            int src)
-    {
-        int[] distance = new int[V];
-        for (int i = 0; i < V; i++)
-            distance[i] = Integer.MAX_VALUE;
-        distance[src] = 0;
-
-        PriorityQueue<AdjListNode> pq = new PriorityQueue<>(
-                Comparator.comparingInt(AdjListNode::getWeight));
-        pq.add(new AdjListNode(src, 0));
-
-        while (pq.size() > 0) {
-            AdjListNode current = pq.poll();
-
-            for (AdjListNode n :
-                    graph.get(current.getVertex())) {
-                if (distance[current.getVertex()]
-                        + n.getWeight()
-                        < distance[n.getVertex()]) {
-                    distance[n.getVertex()]
-                            = n.getWeight()
-                            + distance[current.getVertex()];
-                    pq.add(new AdjListNode(
-                            n.getVertex(),
-                            distance[n.getVertex()]));
-                }
-            }
-        }
-        // If you want to calculate distance from source to
-        // a particular target, you can return
-        // distance[target]
-        return distance;
-    }
-
-
-    // Timecomplexity : O(ELogv)
-    static int[] dijkstra(
-            int V,
-            ArrayList<ArrayList<ArrayList<Integer>>> adj,
-            int S) {
-        HashMap<Integer, Node> map = new HashMap<>();
-        PriorityQueue<Node> q = new PriorityQueue<>();
-        boolean[] visited = new boolean[V];
-        map.put(S, new Node(S, 0));
-        q.add(new Node(S, 0));
-
-        while (!q.isEmpty()) {
-            Node n = q.poll();
-            int v = n.v;
-            int distance = n.distance;
-            visited[v] = true;
-
-            ArrayList<ArrayList<Integer>> adjList
-                    = adj.get(v);
-            for (ArrayList<Integer> adjLink : adjList) {
-
-                if (visited[adjLink.get(0)] == false) {
-                    if (!map.containsKey(adjLink.get(0))) {
-                        map.put(
-                                adjLink.get(0),
-                                new Node(v,
-                                        distance
-                                                + adjLink.get(1)));
-                    } else {
-                        Node sn = map.get(adjLink.get(0));
-                        if (distance + adjLink.get(1)
-                                < sn.distance) {
-                            sn.v = v;
-                            sn.distance
-                                    = distance + adjLink.get(1);
-                        }
-                    }
-                    q.add(new Node(adjLink.get(0),
-                            distance
-                                    + adjLink.get(1)));
-                }
-            }
-        }
-
-        int[] result = new int[V];
-        for (int i = 0; i < V; i++) {
-            result[i] = map.get(i).distance;
-        }
-
-        return result;
-    }
     public static void main(String[] args)
     {
         ArrayList<ArrayList<ArrayList<Integer> > > adj
