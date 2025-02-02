@@ -19,28 +19,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        String server_ip = "http://XXXX:8080"; /*change to your web server*/
-        String phone_no1 = "09985XXXXX";/*change number to your numbers*/
-        String phone_no2 = "09985XXXXX";/*change number to your numbers*/
-        String api_key = "KKXXXXX";/*kookoo api key*/
-        String kookoo_number = "91xxxxx";/*kookoo assigned number*/
-
-        Date d = new Date();
-        String trackId = "" + d.getTime();
-        String url = "http://kookoo.in/outbound/outbound.php";
-        URIBuilder uribuilder = new URIBuilder(url);
-        uribuilder.addParameter("api_key", api_key);
-        uribuilder.addParameter("phone_no", phone_no1);
-        uribuilder.addParameter("caller_id", kookoo_number);
-        /*assigned kookoo number*/
-        uribuilder.addParameter("url",
-                server_ip + "/kookoocall/outboundcall?number2=" + phone_no2 + "&trackId=" + trackId);
-        uribuilder.addParameter("callback_url",
-                server_ip + "/kookoocall/outbound_callstatus?number2=" + phone_no2 + "&trackId=" + trackId);
-
-        URI uri = uribuilder.build();
-        System.out.println("Final Outboud API url " + uri);
-
+       
         int[] arr = {111, 8, 3, 2, 9, 5, 18};
         QuickSort s = new QuickSort(arr);
         DFS D = new DFS();
