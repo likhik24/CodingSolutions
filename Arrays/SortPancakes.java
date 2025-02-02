@@ -80,8 +80,8 @@ public class SortPancakes {
             }
 
         }
-        for(int i: arr)
-            System.out.println(i);
+        // for(int i: arr)
+        //     System.out.println(i);
         return result;
     }
 

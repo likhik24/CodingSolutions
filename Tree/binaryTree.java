@@ -1,22 +1,9 @@
 package Tree;
 
 import java.util.HashMap;
-
+import Tree.Tree ;
 public class binaryTree {
-    class Tree {
-        Tree left;
-        Tree right;
-        int val;
-        Tree(int val) {
-            this.val = val;
-            this.left = this.right = null;
-        }
-        Tree(int val, Tree left, Tree right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
+ 
     HashMap<Integer, Integer> valueIndexMap = new HashMap<>();
     Tree root=null;
     int preorderIndex = 0;

@@ -11,7 +11,9 @@ import java.util.*;
 //
 //
 //        Example 1:
-//
+//0:1,2,7 1:3,6,7
+//        1:0, 2:0 7:0,1 3:1, 6:1
+//first visit source and for each adj add it to the queue , from this we visit their own adjacents and add to queue incrementing bus count if its different from source
 //        Input: routes = [[1,2,7],[3,6,7]], source = 1, target = 6
 //        Output: 2
 //        Explanation: The best strategy is take the first bus to the bus stop 7, then take the second bus to the bus stop 6.
