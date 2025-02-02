@@ -10,7 +10,7 @@ import java.util.*;
 //
 //        Example 1:
 //
-//        Input: num = "1221"
+//        Input: num = "1221" //184363481 //at an index i find a i+1 which is nums[i+1]>nums[i] and i < length/2
 //        Output: "2112"
 //        Explanation: The next palindrome larger than "1221" is "2112".
 //        Example 2:
@@ -39,6 +39,7 @@ public class NextPalindromeWithSameDigits {
                 k = i; break;
             }
         }
+        System.out.println(k);
 
         if (k == -1) return "";
 
@@ -48,12 +49,13 @@ public class NextPalindromeWithSameDigits {
                 l = i; break;
             }
         }
+        System.out.println(l);
 
         // swap
         char temp = num.charAt(k);
         ans[k] = num.charAt(l);
         ans[l] = temp;
-
+        System.out.println(new String(ans));
         // reverse from k+1 to n
         int left = k+1; int right = n-1;
         while (left < right) {
@@ -70,5 +72,11 @@ public class NextPalindromeWithSameDigits {
         }
 
         return new String(ans);
+    }
+
+    public static void main(String[] args) {
+        NextPalindromeWithSameDigits digits = new NextPalindromeWithSameDigits();
+        System.out.println(digits.nextPalindrome("124363421"));
+        System.out.println(digits.nextPalindrome("18493639481"));
     }
 }

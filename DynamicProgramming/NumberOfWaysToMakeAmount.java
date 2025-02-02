@@ -15,8 +15,7 @@ public class NumberOfWaysToMakeAmount {
     public int coinsWays(int[] coins, int amount) {
         int[] dp = new int[amount+1];
         Arrays.fill(dp,0);
-        //initally we have 0 combinations for all amount and to make 0 amount we need 0 coins which is 1 combination
-        //now for each coin we take, we  compute combinations for all  amount s greater than or equal to current coin denimination we need to add currcombinations[amount] + combinations[amount-coin];
+        //initally we have 0 combinations for all amount and to make 0 amount we need 0 coins which is 1 combination//now for each coin we take, we  compute combinations for all  amount s greater than or equal to current coin denimination we need to add currcombinations[amount] + combinations[amount-coin];
         //if we take coin with denomination 5, it doensot effect combinations of coins with denomination less than 5
         dp[0]= 1;
 
