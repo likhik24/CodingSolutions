@@ -17,53 +17,50 @@ Variation of https://leetcode.com/problems/concatenated-words
 import java.util.*;
 
 public class FindConcatenatedWords {
-    public HashMap<String, ArrayList<ArrayList<String>>> concatenatedWords(String[] words) {
+    public  ArrayList<ArrayList<String>> concatenatedWords(String[] words) {
         TreeSet<String> wordsSet = new TreeSet<>();
-        HashMap<String, ArrayList<ArrayList<String>>> compositeWordsMap = new HashMap<>();
-
+        ArrayList<ArrayList<String>> result = new ArrayList<>();
+      
         for(String word:words) {
             wordsSet.add(word);
         }
-        for(String word:words) {
-            wordsSet.remove(word);
-            findCompositeWords(word, new ArrayList<>(), word, wordsSet, compositeWordsMap);
-            wordsSet.add(word);
-        }
-
-       return compositeWordsMap;
-    }
-
-
-    public boolean findCompositeWords(String word, ArrayList<String> result, String originalWord,TreeSet<String> wordsSet,HashMap<String, ArrayList<ArrayList<String>>> compositeWordsMap ) {
-        if(word.length() == 0 && result.size()>1) {
-            ArrayList<ArrayList<String>> subres = compositeWordsMap.getOrDefault(originalWord, new ArrayList<>());
-            subres.add(new ArrayList<>(result));
-            result.clear();
-            compositeWordsMap.put(originalWord, subres);
-            return true;
-        }
-        for(int i=1;i<=word.length();i++) {
-            if(wordsSet.contains(word.substring(0,i))) {
-                result.add(word.substring(0,i)); //w
-                findCompositeWords(word.substring(i), result, originalWord, wordsSet, compositeWordsMap);
+        for(String word: words) {
+            int length = word.length();
+            boolean[] dp = new boolean[length+1];
+            dp[0] = true; 
+            HashSet<String> subwords = new HashSet<>();
+            for(int i=1;i<=length;i++) {
                
+                for(int j=0; j<i ;j++ ) {
+                    if(dp[j] && wordsSet.contains(word.substring(j,i))) {
+                    
+                        subwords.add(word.substring(j,i));
+                        dp[i] = true;
+                    }
+                }  
+            }
+            if(dp[word.length()]) {
+                subwords.add(word);
+                if(subwords.size() > 1)
+                result.add(new ArrayList<>(subwords));
             }
         }
-        return false;
+        
+        return result;
+    
+
     }
+
 
     public static void main(String[] args) {
         FindConcatenatedWords words  = new FindConcatenatedWords();
-        HashMap<String, ArrayList<ArrayList<String>>> compositeWordsMap = words.concatenatedWords(new String[]{"car","super","supercar","hero","superhero","superherocar","spring","flower","springflower","winter","cool"});
-        for(Map.Entry<String,ArrayList<ArrayList<String>>> entry: compositeWordsMap.entrySet()) {
-            ArrayList<ArrayList<String>> subre= entry.getValue();
-            System.out.print(" words for key " + entry.getKey());
-            System.out.println();
-            for(ArrayList<String> re : subre) {
-                for(String s: re)
-                    System.out.print(s + " , ");
-                System.out.println();
-            }
+        ArrayList<ArrayList<String>> compositeWordsList = words.concatenatedWords(new String[]{"car","super","supercar","hero","superhero","superherocar","spring","flower","springflower","winter","cool"});
+       
+        int index=0;
+        for(ArrayList<String> subre: compositeWordsList) {
+             System.out.println("wordList at " + index++);
+             for(String s: subre)
+              System.out.println(s);
         }
     }
 }
